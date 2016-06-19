@@ -47,6 +47,7 @@ jspm_packages
 *.lo
 *.o
 *.obj
+*.bc
 
 # Precompiled Headers
 *.gch
@@ -70,7 +71,13 @@ jspm_packages
 # Executables
 *.exe
 *.out
+*.out.js
+*.out.js.mem
 *.app
+
+mozjpeg/.libs
+mozjpeg/.deps
+
 
 
 ### SublimeText ###

@@ -1,0 +1,37 @@
+md5cmp-md5.o: md5.c \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/sys/types.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/features.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/lib/libc/musl/arch/emscripten/bits/alltypes.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/endian.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/stdint.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/lib/libc/musl/arch/emscripten/bits/stdint.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/sys/select.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/sys/sysmacros.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/compat/string.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/string.h \
+  /home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/strings.h \
+  md5.h
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/sys/types.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/features.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/lib/libc/musl/arch/emscripten/bits/alltypes.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/endian.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/stdint.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/lib/libc/musl/arch/emscripten/bits/stdint.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/sys/select.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/sys/sysmacros.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/compat/string.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/string.h:
+
+/home/andrew/bin/emsdk_portable/emscripten/master/system/include/libc/strings.h:
+
+md5.h:
