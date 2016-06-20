@@ -16,16 +16,13 @@ function toBuffer(ab) {
 	return buffer;
 }
 
-var stdout = "";
-var stderr = "";
-
 module.exports = function(file, options) {
 	// file: Buffer containing file in PPM, PGM, BMP, or Targa format.
 	// options: hash containing options to pass to cjpeg
 	// returns: file contents?
 
-	stdout = "";
-	stderr = "";
+	var stdout = "";
+	var stderr = "";
 
 	var args = ["-outfile", "/output.jpg"];
 
@@ -43,38 +40,19 @@ module.exports = function(file, options) {
 
 	args.push("/input");
 
-	FS.writeFile("/input", toUint8Array(file), {
-		encoding: "binary"
-	});
-
-	Module["callMain"](args);
-
-	var file;
-	try { 
-		file = FS.readFile("/output.jpg");
-	} catch (e) {
-		return new Error("No output: " + stderr);
-	}
-
-	FS.unlink("/output.jpg");
-	FS.unlink("/input");
-
-	//console.log(file);
-	return {
-		"data": toBuffer(file.buffer),
-		"stderr": stderr
+	var Module = {
+		"print": function(text) {
+			stdout += text;
+		},
+		"printErr": function(text) {
+			stderr += text;
+		},
+		"preRun": [function() {
+			FS.writeFile("/input", toUint8Array(file), {
+				encoding: "binary"
+			});
+		}],
+		"arguments": args,
+		"ENVIRONMENT": "SHELL" // maximum compatibility?
 	};
-}
-
-var Module = {
-	"noInitialRun" : true,
-	"noExitRuntime" : true,
-	"print": function(text) {
-		stdout += text;
-	},
-	"printErr": function(text) {
-		stderr += text;
-	},
-	"ENVIRONMENT": "SHELL"
-}
 
