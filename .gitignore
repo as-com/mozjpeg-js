@@ -75,8 +75,8 @@ jspm_packages
 *.out.js.mem
 *.app
 
-mozjpeg/.libs
-mozjpeg/.deps
+deps/mozjpeg/.libs
+deps/mozjpeg/.deps
 
 
 
