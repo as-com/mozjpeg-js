@@ -1,0 +1,40 @@
+{
+  "name": "mozjpeg-js",
+  "version": "3.1.0-beta",
+  "description": "Implementation of MozJPEG in pure JavaScript, using Emscripten",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify index.js -o dist/mozjpeg.js -s mozjpeg",
+    "uglify": "uglifyjs dist/mozjpeg.js -o dist/mozjpeg.min.js -m -c --screw-ie8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/as-com/mozjpeg-js.git"
+  },
+  "keywords": [
+    "jpeg",
+    "mozjpeg",
+    "emscripten",
+    "image",
+    "img",
+    "jpg",
+    "compress",
+    "emscripten"
+  ],
+  "author": "Andrew Sun",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/as-com/mozjpeg-js/issues"
+  },
+  "homepage": "https://github.com/as-com/mozjpeg-js#readme",
+  "files": [
+    "index.js",
+    "lib",
+    "dist"
+  ],
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "uglify-js": "^2.6.3"
+  }
+}
