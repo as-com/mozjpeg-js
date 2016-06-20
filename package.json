@@ -1,11 +1,12 @@
 {
   "name": "mozjpeg-js",
-  "version": "3.1.0-beta",
+  "version": "3.1.0-beta.1",
   "description": "Implementation of MozJPEG in pure JavaScript, using Emscripten",
-  "main": "index.js",
+  "main": "dist/mozjpeg.js",
+  "jsnext:main": "dist/mozjpeg.es2015.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify index.js -o dist/mozjpeg.js -s mozjpeg",
+    "build": "rollup -c",
     "uglify": "uglifyjs dist/mozjpeg.js -o dist/mozjpeg.min.js -m -c --screw-ie8"
   },
   "repository": {
@@ -29,12 +30,12 @@
   },
   "homepage": "https://github.com/as-com/mozjpeg-js#readme",
   "files": [
-    "index.js",
     "lib",
     "dist"
   ],
   "devDependencies": {
-    "browserify": "^13.0.1",
+    "rollup": "^0.32.0",
+    "rollup-plugin-commonjs": "^3.0.0",
     "uglify-js": "^2.6.3"
   }
 }

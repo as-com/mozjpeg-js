@@ -1,25 +1,7 @@
-function toUint8Array(buffer) {
-	var ab = new ArrayBuffer(buffer.length);
-	var view = new Uint8Array(ab);
-	for (var i = 0; i < buffer.length; ++i) {
-		view[i] = buffer[i];
-	}
-	return view;
-}
-
-function toBuffer(ab) {
-	var buffer = new Buffer(ab.byteLength);
-	var view = new Uint8Array(ab);
-	for (var i = 0; i < buffer.length; ++i) {
-		buffer[i] = view[i];
-	}
-	return buffer;
-}
-
 module.exports = function(file, options) {
-	// file: Buffer containing file in PPM, PGM, BMP, or Targa format.
+	// file: Typed array containing file in PPM, PGM, BMP, or Targa format.
 	// options: hash containing options to pass to cjpeg
-	// returns: file contents?
+	// returns: object, data = typed array with file output, stderr = command output
 
 	var stdout = "";
 	var stderr = "";
@@ -48,7 +30,7 @@ module.exports = function(file, options) {
 			stderr += text;
 		},
 		"preRun": [function() {
-			FS.writeFile("/input", toUint8Array(file), {
+			FS.writeFile("/input", file, {
 				encoding: "binary"
 			});
 		}],

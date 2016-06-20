@@ -183,7 +183,7 @@ AUTOCONF = ${SHELL} /home/andrew/Documents/mozjpeg-js/deps/mozjpeg/missing autoc
 AUTOHEADER = ${SHELL} /home/andrew/Documents/mozjpeg-js/deps/mozjpeg/missing autoheader
 AUTOMAKE = ${SHELL} /home/andrew/Documents/mozjpeg-js/deps/mozjpeg/missing automake-1.15
 AWK = gawk
-BUILD = 20160619
+BUILD = 20160620
 CC = /home/andrew/bin/emsdk_portable/emscripten/master/emcc
 CCAS = /home/andrew/bin/emsdk_portable/emscripten/master/emcc
 CCASDEPMODE = depmode=gcc3

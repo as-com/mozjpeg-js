@@ -10,7 +10,7 @@
 
 	//console.log(file);
 	return {
-		"data": toBuffer(file.buffer),
+		"data": file,
 		"stderr": stderr
 	};
 }
