@@ -1,3 +1,3 @@
 import encode from "./lib/cjpeg";
 
-export {encode};
+export default encode;
