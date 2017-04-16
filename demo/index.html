@@ -1,0 +1,100 @@
+<input type="file" id="input">
+<output id="output"></output>
+<style>
+output::before {
+	content: "output:";
+}
+output {
+	display: block;
+	padding: 1em;
+	margin: 1em;
+	outline: 1px solid gray;
+	white-space: pre-wrap;
+	font-family: monospace;
+}
+</style>
+<script src="../dist/mozjpeg.js"></script>
+<script>
+
+console.info("Simple demo, it freezes the main window, so the right way is to use a Worker")
+
+
+// FileReaders promisified
+var [readAsText, readAsArrayBuffer, readAsDataURL] = ['readAsText', 'readAsArrayBuffer', 'readAsDataURL'].map(read => 
+	file => 
+		new Promise(resolve => {
+			var reader = new FileReader();
+			reader[read](file)
+			reader.onload = e => {
+				resolve(e.target.result)
+			}
+		})
+);
+
+
+function getImageData(file) {
+	return readAsArrayBuffer(file)
+	.then(buffer => new Uint8Array(buffer));
+}
+
+
+input.onchange = e => {
+	var file = input.files[0];
+
+	getImageData(file)
+	.then(data => {	
+		var now = performance.now();
+
+		var result = mozjpeg(data, {}, console.info);
+		
+		var after = performance.now() - now;
+
+		console.log(result);
+
+		var blob = new Blob([result.data], {type: 'image/jpeg'});
+
+		output.innerHTML = `
+			file:           ${file.name}
+			size:           ${file.size} bytes
+			optimized size: ${blob.size} bytes  ${((1 - blob.size/file.size)*100).toFixed()}% less
+			duration:       ${after.toFixed(2)} ms 
+		`;
+		
+		var img = new Image();
+		img.src = URL.createObjectURL(blob);
+		img.onload = e => URL.revokeObjectURL(blob);
+		output.appendChild(img);
+	});
+}
+
+
+
+// with worker:
+
+// worker.postMessage({
+// 	type: "command",
+// 	file: {
+// 		"name": "input.png",
+// 		"data": imgData
+// 	}
+// });
+
+// var worker = new Worker("worker.js");
+// worker.onmessage = function(event) {
+// 	var message = event.data;
+// 	if (message.type == "ready") {
+// 		console.log('worker ready')
+// 		input.disabled = false;
+// 	} else if (message.type == "stdout") {
+// 			console.log(message.data);
+// 	} else if (message.type == "start") {
+// 			console.log('start');
+// 	} else if (message.type == "done") {
+// 		message.data.forEach(function(file) {
+// 			console.log(file, file.data)
+// 		});
+// 	}
+// };
+
+
+</script>

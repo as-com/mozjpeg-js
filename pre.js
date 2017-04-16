@@ -9,14 +9,9 @@ module.exports = function(file, options) {
 	var args = ["-outfile", "/output.jpg"];
 
 	for (var key in options) {
-		if (!options.hasOwnProperty(key)) continue;
-
-		if (options[key]) {
+		if (typeof options[key] == 'string') {
 			args.push("-" + key);
-			if (typeof options[key] !== "boolean") {
-				// option has a value
-				args.push(String(options[key]));
-			}
+			args.push(String(options[key]));
 		}
 	}
 
