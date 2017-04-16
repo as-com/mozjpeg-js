@@ -9,7 +9,7 @@ module.exports = function(file, options) {
 	var args = ["-outfile", "/output.jpg"];
 
 	for (var key in options) {
-		if (options[key]) {
+		if (typeof options[key] == 'string') {
 			args.push("-" + key);
 			args.push(String(options[key]));
 		}
