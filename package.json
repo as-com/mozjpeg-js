@@ -6,7 +6,7 @@
   "jsnext:main": "dist/mozjpeg.es2015.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c",
+    "build": "rollup -c rollup.config.js",
     "uglify": "uglifyjs dist/mozjpeg.js -o dist/mozjpeg.min.js -m -c --screw-ie8"
   },
   "repository": {
@@ -24,7 +24,7 @@
     "emscripten"
   ],
   "author": "Andrew Sun",
-  "license": "GPL-3.0",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/as-com/mozjpeg-js/issues"
   },
