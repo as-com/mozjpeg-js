@@ -1,14 +1,15 @@
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from "rollup-plugin-commonjs";
 
 export default {
-	entry: 'index.js',
+	input: "index.js",
 	plugins: [commonjs()],
-	moduleName: "mozjpeg",
-	targets: [{
-		dest: 'dist/mozjpeg.js',
-		format: 'umd'
+	output: [{
+		file: "dist/mozjpeg.js",
+		format: "umd",
+		name: "mozjpeg"
 	}, {
-		dest: 'dist/mozjpeg.es6.js',
-		format: 'es'
+		file: "dist/mozjpeg.es6.js",
+		format: "es",
+		name: "mozjpeg"
 	}]
 };

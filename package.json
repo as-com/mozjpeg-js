@@ -3,11 +3,14 @@
   "version": "3.3.1-beta.1",
   "description": "Implementation of MozJPEG in pure JavaScript, using Emscripten",
   "main": "dist/mozjpeg.js",
-  "jsnext:main": "dist/mozjpeg.es2015.js",
+  "jsnext:main": "dist/mozjpeg.es6.js",
+  "module": "dist/mozjpeg.es6.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.js",
-    "uglify": "uglifyjs dist/mozjpeg.js -o dist/mozjpeg.min.js -m -c"
+    "build": "npm run build:cjpeg && npm run build:rollup && npm run build:uglify",
+    "build:cjpeg": "./build-js.sh",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:uglify": "uglifyjs dist/mozjpeg.js -o dist/mozjpeg.min.js -m -c"
   },
   "repository": {
     "type": "git",
@@ -35,8 +38,8 @@
     "dist"
   ],
   "devDependencies": {
-    "rollup": "^0.32.0",
-    "rollup-plugin-commonjs": "^3.0.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-commonjs": "^9.1.0",
     "uglify-js": "^3.3.18"
   }
 }

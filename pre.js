@@ -1,6 +1,6 @@
 module.exports = function(file, options) {
 	// file: Typed array containing file in PPM, PGM, BMP, or Targa format.
-	// options: hash containing options to pass to cjpeg
+	// options: hash containing options to pass to cjpeg or an array of arguments
 	// returns: object, data = typed array with file output, stderr = command output
 
 	var stdout = "";
@@ -8,14 +8,18 @@ module.exports = function(file, options) {
 
 	var args = ["-outfile", "/output.jpg"];
 
-	for (var key in options) {
-		if (!options.hasOwnProperty(key)) continue;
+	if (Array.isArray(options)) {
+		args = args.concat(options);
+	} else {
+		for (var key in options) {
+			if (!options.hasOwnProperty(key)) continue;
 
-		if (options[key]) {
-			args.push("-" + key);
-			if (typeof options[key] !== "boolean") {
-				// option has a value
-				args.push(String(options[key]));
+			if (options[key]) {
+				args.push("-" + key);
+				if (typeof options[key] !== "boolean") {
+					// option has a value
+					args.push(String(options[key]));
+				}
 			}
 		}
 	}

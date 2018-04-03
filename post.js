@@ -2,7 +2,7 @@
 	try { 
 		file = FS.readFile("/output.jpg");
 	} catch (e) {
-		return new Error("No output: " + stderr);
+		throw new Error("No output: " + stderr);
 	}
 
 	FS.unlink("/output.jpg");
